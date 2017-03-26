@@ -6,7 +6,7 @@ if(isServer) then {
 
 	_position		= [80] call find_position;
 	
-	_mission 		= [_position,"medium","Gas station robbery","MainHero",false] call mission_init;
+	_mission 		= [_position,"medium","Gas station robbery","MainHero2",false] call mission_init;
 
 	diag_log 		format["WAI: [Mission:[Hero] Robbery]: Starting at %1",_position];
 
@@ -29,33 +29,22 @@ if(isServer) then {
 	{ _x setVectorUp surfaceNormal position _x; } count _baserunover;
 
 	_num = round (random 3) + 4;
-	[[_position select 0, _position select 1, 0],_num,"medium",["random","at"],4,"random","SurvivorWpink_DZ","random",["bandit",150],_mission] call spawn_group;
+	[[_position select 0, _position select 1, 0],_num,"hard",["random","at"],4,"random","SurvivorWpink_DZ","random",["bandit",150],_mission] call spawn_group;
 	[[_position select 0, _position select 1, 0],4,"medium","random",4,"random","SurvivorWpink_DZ","random",["bandit",75],_mission] call spawn_group;
-	[[_position select 0, _position select 1, 0],4,"medium","random",4,"random","SurvivorWpink_DZ","random",["bandit",75],_mission] call spawn_group;	 
+	[[_position select 0, _position select 1, 0],4,"hard","random",4,"random","SurvivorWpink_DZ","random",["bandit",75],_mission] call spawn_group;	 
+	[[_position select 0, _position select 1, 0],4,"hard","random",4,"random","SurvivorWpink_DZ","random",["bandit",75],_mission] call spawn_group;	 
 
-	_dir 			= floor(round(random 360));
-
-	_vehclass 		= cargo_trucks 		call BIS_fnc_selectRandom;		
-	_vehclass2 		= refuel_trucks 	call BIS_fnc_selectRandom;
-	_vehclass3 		= military_unarmed 	call BIS_fnc_selectRandom;
-
-	_vehicle		= [_vehclass,_position,false,_dir] 	call custom_publish;
-	_vehicle2		= [_vehclass2,_position,false,_dir] call custom_publish;
-	_vehicle3		= [_vehclass3,_position,false,_dir] call custom_publish;
-	
-	if(debug_mode) then {
-		diag_log format["WAI: [Hero] Robbery spawned a %1",_vehclass];
-		diag_log format["WAI: [Hero] Robbery spawned a %1",_vehclass3];
-		diag_log format["WAI: [Hero] Robbery spawned a %1",_vehclass2];
+	_vehclass 		= "T34_TK_EP1";
+	_vehicle		= [_vehclass,_position] call custom_publish;
 	};
 	
 	_complete = [
 		[_mission,_crate],		
 		["crate"], 						
 		[_vehicle,_vehicle2,_vehicle3],	
-		"A gang of fat bitches has robbed a gas station, stop them now!",	
+		"A gang of fat bitches has robbed a gas station with a tank, stop them now!",	
 		"All the fat bitches have been cream pied!",															
-		"The fat bitches got away with the loot, WTF man!"																
+		"The fat bitches got away with the loot and tank, WTF man!"																
 	] call mission_winorfail;
 
 	if(_complete) then {
