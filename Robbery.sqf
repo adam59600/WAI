@@ -15,10 +15,10 @@ if(isServer) then {
 
 	[_crate,16,[8,crate_tools_sniper],[3,crate_items_high_value],[4,crate_backpacks_large]] call dynamic_crate;
 	 
-	_baserunover0 	= createVehicle ["land_fortified_nest_big",[(_position select 0) - 40, (_position select 1),-0.2],[], 0, "CAN_COLLIDE"];
-	_baserunover1 	= createVehicle ["land_fortified_nest_big",[(_position select 0) + 40, (_position select 1),-0.2],[], 0, "CAN_COLLIDE"];
-	_baserunover2 	= createVehicle ["land_fortified_nest_big",[(_position select 0), (_position select 1) - 40,-0.2],[], 0, "CAN_COLLIDE"];
-	_baserunover3 	= createVehicle ["land_fortified_nest_big",[(_position select 0), (_position select 1) + 40,-0.2],[], 0, "CAN_COLLIDE"];
+	_baserunover0 	= createVehicle ["land_fortified_nest_big",[(_position select 0) - 30, (_position select 1),-0.1],[], 0, "CAN_COLLIDE"];
+	_baserunover1 	= createVehicle ["land_fortified_nest_big",[(_position select 0) + 30, (_position select 1),-0.1],[], 0, "CAN_COLLIDE"];
+	_baserunover2 	= createVehicle ["land_fortified_nest_big",[(_position select 0), (_position select 1) - 30,-0.1],[], 0, "CAN_COLLIDE"];
+	_baserunover3 	= createVehicle ["land_fortified_nest_big",[(_position select 0), (_position select 1) + 30,-0.1],[], 0, "CAN_COLLIDE"];
 	_baserunover4 	= createVehicle ["Land_Ind_FuelStation_Build_EP1",[(_position select 0) - 10, (_position select 1),-0.2],[], 0, "CAN_COLLIDE"];
 	
 	_baserunover = [_baserunover0,_baserunover1,_baserunover2,_baserunover3,_baserunover4];
@@ -48,7 +48,7 @@ if(isServer) then {
 	] call mission_winorfail;
 
 	if(_complete) then {
-		[_crate,[2,crate_weapons_buildables],[4,crate_tools_buildable],[30,crate_items_buildables],4] call dynamic_crate;
+		[_crate,16,[8,crate_tools_sniper],[3,crate_items_high_value],[4,crate_backpacks_large]] call dynamic_crate;
 	};
 
 	diag_log format["WAI: [Mission:[Hero] Robbery]: Ended at %1",_position];
